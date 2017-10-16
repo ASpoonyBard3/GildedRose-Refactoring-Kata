@@ -10,14 +10,53 @@ namespace csharp
     {
         public static void DexerxityVestBehaviour(Item item)
         {
-            if (item.SellIn >= 1 && item.Quality >=1)
+            if(item.SellIn >= 1 && item.Quality >= 1)
             {
-                Gradance.DegradeBy(1, item);
+                QualityAdjustment.DegradeBy(1, item);
             }
-            if (item.SellIn <= 0 && item.Quality <=2)
+            if (item.SellIn <= 0 && item.Quality >= 2)
             {
-                Gradance.DegradeBy(2, item);
+                QualityAdjustment.DegradeBy(item.Quality == 1 ? 1 : 2, item);
+            }
+            item.SellIn -= 1;
+        }
+
+        public static void MoongooseBehaviour(Item item)
+        {
+            if(item.SellIn >= 1 && item.Quality >= 1)
+            {
+                QualityAdjustment.DegradeBy(1, item);
+            }
+            if (item.SellIn <= 0 && item.Quality >= 1)
+            {
+                QualityAdjustment.DegradeBy(item.Quality == 1 ? 1 : 2, item);
+            }
+            item.SellIn -= 1;
+        }
+
+        public static void AgedBrieBehaviour(Item item)
+        {
+            {
+                if(item.SellIn >= 1 && item.Quality >= 49)
+                {
+                    QualityAdjustment.DegradeBy(1, item);
+                }
+                if (item.SellIn <= 0 && item.Quality >= 49)
+                {
+                    QualityAdjustment.DegradeBy(item.Quality == 49 ? 1: 2, item);
+                }
+                item.SellIn -= 1;
+            }
+
+        }
+
+        public static void ConcertTicketBehaviour(Item item)
+        {
+            if (item.SellIn <= 10 && item.SellIn >= 6 && item.Quality <= 48)
+            {
+                QualityAdjustment.UpgradeBy(2,item);
             }
         }
     }
 }
+

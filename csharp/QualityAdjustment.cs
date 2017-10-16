@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace csharp
 {
-    public class Gradance
+    public class QualityAdjustment
     {
         public static void DegradeBy(int number, Item item)
         {
