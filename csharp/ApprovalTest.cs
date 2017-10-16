@@ -1,14 +1,15 @@
 ﻿using ApprovalTests;
 using ApprovalTests.Reporters;
-using NUnit.Framework;
+using NUnit; 
 using System;
 using System.IO;
 using System.Text;
+using NUnit.Framework;
 
 namespace csharp
 {
     [TestFixture]
-    [UseReporter(typeof(NUnitReporter))]
+    [UseReporter()]
     public class ApprovalTest
     {
         [Test]
@@ -19,7 +20,7 @@ namespace csharp
             Console.SetIn(new StringReader("a\n"));
 
             Program.Main(new string[] { });
-            String output = fakeoutput.ToString();
+            var output = fakeoutput.ToString();
             Approvals.Verify(output);
         }
     }
