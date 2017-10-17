@@ -115,7 +115,7 @@ namespace csharp
             app.UpdateQuality();
             if (Items[0].Name != "Aged Brie" && Items[0].Name != "Backstage passes to a TAFKAL80ETC concert" && 
                 Items[0].Name != "Sulfuras, Hand of Ragnaros" &&
-                Items[0].SellIn < 0)
+                Items[0].SellIn <= 0)
                 Assert.AreEqual(9, Items[0].Quality);
         }
     }

@@ -42,8 +42,12 @@ namespace csharp
                 QualityAdjustment.UpgradeBy(item.Quality == 50 ? 0 : 1, item);
             if (item.SellIn <= 10 && item.SellIn >= 6 && item.Quality <= 49)
                 QualityAdjustment.UpgradeBy(item.Quality == 49 ? 1 : 2, item);
-            if (item.SellIn <= 5 && item.Quality <= 48)
+            if (item.SellIn <= 5 && item.SellIn >= 1 && item.Quality <= 47)
                 QualityAdjustment.UpgradeBy(3, item);
+            if (item.SellIn <= 5 && item.SellIn >= 1 && item.Quality >= 48)
+                item.Quality = 50;
+            if (item.SellIn <= 0)
+                item.Quality = 0;
             item.SellIn -= 1;
         }
 
