@@ -6,6 +6,16 @@ namespace csharp
     [TestFixture]
     public class GildedRoseTest
     {
+        private IList<Item> Items = new List<Item>
+        {
+            new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
+            new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
+            new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+            new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+            new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
+            new Item {Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20}
+        };
+
         [Test]
         public void foo()
         {
@@ -18,7 +28,7 @@ namespace csharp
         [Test]
         public void QualityNotNegative()
         {
-            IList<Item> Items = new List<Item> { new Item() { Name = "foo", SellIn = 0, Quality = 5} };
+            IList<Item> Items = new List<Item> { new Item() { Name = "Conjured Mana Cake", SellIn = 0, Quality = 5} };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.GreaterOrEqual(Items[0].Quality, 0);
@@ -47,7 +57,6 @@ namespace csharp
                     app.UpdateQuality();
                 }
             }
-
         }
         [Test]
         public void QualityDegradesTwiceAsFast()

@@ -31,7 +31,7 @@ namespace csharp
                         ItemBehaviour.ConjuredManaCake(item);
                         break;
                     default:
-                        break;
+                        return;
                 }
             }
         }
