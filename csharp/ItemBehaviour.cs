@@ -61,7 +61,7 @@ namespace csharp
             {
                 QualityAdjustment.DegradeBy(4, item);
             }
-            if (item.SellIn <= 3 && item.Quality <= 3 && item.Quality >= 1)
+            if (item.SellIn <= 0 && item.Quality <= 3 && item.Quality >= 1)
                 item.Quality = 0;
 
             item.SellIn -= 1;

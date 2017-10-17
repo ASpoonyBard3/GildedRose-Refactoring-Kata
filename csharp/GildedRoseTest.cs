@@ -52,10 +52,10 @@ namespace csharp
         [Test]
         public void QualityDegradesTwiceAsFast()
         {
-            IList<Item> Items = new List<Item> { new Item() { Name = "random", SellIn = -1, Quality = 10 } };
+            IList<Item> Items = new List<Item> { new Item() { Name = "Elixir of the Mongoose", SellIn = -1, Quality = 10 } };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
-            if (Items[0].Name != "Aged Brie" && Items[0].Name != "Backstage passes to a TAFKAL80ETC concert" && Items[0].SellIn <0 && Items[0].Name != "Sulfuras, Hand of Ragnaros")
+            if (Items[0].Name == "Elixir of the Mongoose" && Items[0].SellIn <0)
                 Assert.AreEqual(8, Items[0].Quality);
         }
 
