@@ -8,7 +8,7 @@ namespace csharp
 {
     class ItemBehaviour
     {
-        public static void DexerxityVestBehaviour(Item item)
+        public static void MongooseVest(Item item)
         {
             if(item.SellIn >= 1 && item.Quality >= 1)
             {
@@ -20,42 +20,47 @@ namespace csharp
             }
             item.SellIn -= 1;
         }
-
-        public static void MoongooseBehaviour(Item item)
-        {
-            if(item.SellIn >= 1 && item.Quality >= 1)
-            {
-                QualityAdjustment.DegradeBy(1, item);
-            }
-            if (item.SellIn <= 0 && item.Quality >= 1)
-            {
-                QualityAdjustment.DegradeBy(item.Quality == 1 ? 1 : 2, item);
-            }
-            item.SellIn -= 1;
-        }
-
+        
         public static void AgedBrieBehaviour(Item item)
         {
             {
-                if(item.SellIn >= 1 && item.Quality >= 49)
+                if(item.SellIn >= 1 && item.Quality <= 49)
                 {
-                    QualityAdjustment.DegradeBy(1, item);
+                    QualityAdjustment.UpgradeBy(1, item);
                 }
-                if (item.SellIn <= 0 && item.Quality >= 49)
+                if (item.SellIn <= 0 && item.Quality <= 49)
                 {
-                    QualityAdjustment.DegradeBy(item.Quality == 49 ? 1: 2, item);
+                    QualityAdjustment.UpgradeBy(item.Quality == 49 ? 1: 2, item);
                 }
                 item.SellIn -= 1;
             }
-
         }
 
         public static void ConcertTicketBehaviour(Item item)
         {
-            if (item.SellIn <= 10 && item.SellIn >= 6 && item.Quality <= 48)
+            if (item.SellIn >= 11 && item.Quality <= 50)
+                QualityAdjustment.UpgradeBy(item.Quality == 50 ? 0 : 1, item);
+            if (item.SellIn <= 10 && item.SellIn >= 6 && item.Quality <= 49)
+                QualityAdjustment.UpgradeBy(item.Quality == 49 ? 1 : 2, item);
+            if (item.SellIn <= 5 && item.Quality <= 48)
+                QualityAdjustment.UpgradeBy(3, item);
+            item.SellIn -= 1;
+        }
+
+        public static void ConjuredManaCake(Item item)
+        {
+            if (item.SellIn >= 1 && item.Quality >= 1)
             {
-                QualityAdjustment.UpgradeBy(2,item);
+                QualityAdjustment.DegradeBy(item.Quality == 1 ? 1 : 2, item);
             }
+            if (item.SellIn <= 0 && item.Quality >= 4)
+            {
+                QualityAdjustment.DegradeBy(4, item);
+            }
+            if (item.SellIn <= 3 && item.Quality <= 3 && item.Quality >= 1)
+                item.Quality = 0;
+
+            item.SellIn -= 1;
         }
     }
 }
